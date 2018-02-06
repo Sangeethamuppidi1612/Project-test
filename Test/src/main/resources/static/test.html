@@ -1,0 +1,46 @@
+<html>
+<head>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+var hrf=window.location.href.substr(0,window.location.href.lastIndexOf("/"));
+
+function save(){
+
+	var title=document.getElementById("title").value;
+	var dir=document.getElementById("director").value;
+	document.getElementById("title").value="";
+	document.getElementById("director").value="";
+	
+
+var postData="ttl="+title+
+"&dirc="+dir;
+
+$.ajax({
+	url :hrf+"/test_save",
+	type: "POST",
+	data :postData ,
+	success:function(data, textStatus, jqXHR) 
+	{	
+	alert("Record Inserted Successfully");		      			   
+	},
+	error: function(jqXHR, textStatus, errorThrown) 
+	{	
+		alert(data); 
+	}
+	});//ajax
+
+	
+	
+	
+}
+</script>
+<body>
+Title:<input type="text" id="title" name="title">
+Director:<input type="text" id="director" name="director">
+
+
+<button type="button" onClick="javascript:save()"><a href="/listpage">Save</a></button>
+
+</body>
+</html>
